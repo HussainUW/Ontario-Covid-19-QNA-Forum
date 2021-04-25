@@ -1,0 +1,40 @@
+{% extends "layout.html"%}
+{% block content %}
+<div class="content-section bg-content-section">
+    <form method="POST" action="{{url_for('posts.comment_post', post_id=post_id)}}">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group mb-1">
+            <legend class="border-bottom mb-2 Misc-Font-Color">Add Comment</legend>
+            <div class="form-group mb-1">
+                {{ form.responder.label(class="form-control-label Misc-Font-Color mb-1") }}
+                {% if form.responder.errors %}
+                {{ form.responder(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.responder.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.responder(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.body.label(class="form-control-label Misc-Font-Color mb-1") }}
+                {% if form.body.errors %}
+                {{ form.body(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.body.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.body(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-Mode") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

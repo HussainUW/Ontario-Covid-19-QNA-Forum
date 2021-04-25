@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section bg-content-section">
+	<form method="POST" action="">
+		{{form.hidden_tag()}}
+		<fieldset class="form-group">
+			<legend class="article-metadata mb-4 text-Mode">{{legend}}</legend>
+
+			<div class="form-group text-Mode">
+				{{ form.title.label(class="form-control-label") }}
+
+				{% if form.title.errors %}
+				{{ form.title(class="form-control form-control-lg alert-danger is-invalid") }}
+				<div class="invalid-feedback">
+					{% for error in form.title.errors %}
+					<span>{{ error }}</span>
+					{% endfor %}
+				</div>
+				{% else %}
+				{{ form.title(class="form-control form-control-lg") }}
+				{% endif %}
+
+			</div>
+			<div class="form-group text-Mode">
+				{{ form.content.label(class="form-control-label") }}
+				{% if form.content.errors %}
+				{{ form.content(class="form-control form-control-lg alert-danger is-invalid") }}
+				<div class="invalid-feedback">
+					{% for error in form.content.errors %}
+					<span>{{ error }}</span>
+					{% endfor %}
+				</div>
+				{% else %}
+				{{ form.content(class="form-control form-control-lg") }}
+				{% endif %}
+			</div>
+		</fieldset>
+		<div class="form-group me-2 pt-1">
+			{{ form.submit(class="btn btn-outline-Mode") }}
+		</div>
+	</form>
+</div>
+{% endblock content %}

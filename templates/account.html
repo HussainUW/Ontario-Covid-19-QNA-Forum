@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section bg-articleMode">
+	<div class="d-flex">
+    	<img class="rounded-circle account-img" src="{{ image_file }}">
+  		<div class="mt-2">
+      		<h2 class="Misc-Font-Color">{{ current_user.username }}</h2>
+      		<p class="Misc-Font-Color"><small>{{ current_user.email }}</small></p>
+  		</div>
+	</div>
+	<div>
+		<form method="POST" action="" enctype="multipart/form-data">
+			{{form.hidden_tag()}}
+			<fieldset class="form-group">
+				<legend class="article-metadata text-Mode">Account Info</legend>
+
+				<div class="form-group text-Mode">
+					{{ form.username.label(class="form-control-label") }}
+					{% if form.username.errors %}
+					<script>console.log("username - test")</script>
+					{{ form.username(class="form-control form-control-lg alert-danger is-invalid") }}
+					<div class="invalid-feedback">
+						{% for error in form.username.errors %}
+						<div>{{ error }}</div>
+						{% endfor %}
+					</div>
+					{% else %}
+					{{ form.username(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+
+				<div class="form-group text-Mode">
+					{{ form.email.label(class="form-control-label") }}
+					{% if form.email.errors %}
+					<script>console.log("email - test")</script>
+					{{ form.email(class="form-control form-control-lg alert-danger is-invalid") }}
+					<div class="invalid-feedback">
+						{% for error in form.email.errors %}
+						<div>{{ error }}</div>
+						{% endfor %}
+					</div>
+					{% else %}
+					{{ form.email(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+				<div class="form-group text-Mode mt-2">
+					{{ form.picture.label(for="file-upload", class="custom-file-upload") }}</br>
+					{{ form.picture(id="file-upload", type="file") }}
+					<script type="text/javascript">
+						document.getElementById("file-upload").onchange = function() {
+							document.getElementById("uploadFile").value = this.value;
+						};
+					</script>
+					<input id="uploadFile" placeholder="No File" disabled="disabled"/></br>
+					{% if form.picture.errors %}
+						{% for error in form.picture.errors %}
+							<span class="text-danger">{{ error }}</span></br>
+						{% endfor %}
+					{% endif %}
+				</div>
+				<div class="form-group me-2 pt-2">
+					{{ form.submit(class="btn btn-outline-Mode") }}
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+{% endblock content %}
