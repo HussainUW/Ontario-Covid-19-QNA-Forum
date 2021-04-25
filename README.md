@@ -1,5 +1,7 @@
 # Ontario-Covid-19-QNA-Forum
 
+## Web Apllication Can be Accessed Here: http://139.177.196.199/about
+
 ## Sources Of Inspiration
 
 The first inspiration for this project was simply the oppurtunity to take my knowledge of JavaScript, HTML and CSS and be able to apply it to the Python Flask framework, essentially an oppurtunity to learn the Flask framework, Bootstrap styling, Blueprints and the SQLAlchemy ORM for database management all on a Kali Linux environment.
